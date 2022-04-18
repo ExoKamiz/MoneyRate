@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Rate>    //для доступа списка Rate  в нашем представлении
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Chek Rate</h2>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <form asp-controller="Rate" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+    </form>
+
+    @if (Model.Count() > 0) //использование Razor и проверяет на наличие обьекта в списке
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Country Name
+                    </th>
+                    <th>
+                        Country Rate
+                    </th>
+                    <th>
+                        Currency Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--перечисление Category-->
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td width="50%">@obj.CountryName</td>
+                        <td width="30%">@obj.CountryRate</td>
+                        <td width="20%">@obj.CurrencyName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    else
+    {
+        <p> Country not exist.</p>
+    }
+
+</div>
+
