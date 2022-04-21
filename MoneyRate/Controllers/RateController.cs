@@ -13,14 +13,16 @@ namespace MoneyRate.Controllers
         {
             _db = db;       //даем доступ к базе данных
         }
-        public async Task<IActionResult> Index(IEnumerable<Rate> rateList, string searchString)
+
+        //GET 
+        public async Task<IActionResult> Index(string searchString)
         {
-            rateList = _db.Rate;      //записываем наши Rate в бд и передаем в представления
+            //rateList = _db.Rate;      //записываем наши Rate в бд и передаем в представления
 
-            var rates = from m in _db.Rate
-                         select m;
+            var rates = from m in _db.Rate          //создает запрос LINQ и выводит
+                        select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))        //если содержит строку, то меняется запрос
             {
                 rates = rates.Where(s => s.CountryName!.Contains(searchString));
             }
@@ -28,6 +30,13 @@ namespace MoneyRate.Controllers
             return View(await rates.ToListAsync());
         }
 
+        //POST
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)  //Параметр notUsed используется для создания перегрузки Index метода
+        {
+            return "From [HttpPost]Index: filter on " + searchString;   //делая запрос, мы переходим на новую страницу с 
+                                                                        //отфильтрованными данными, а не перезагружаем страницу
+        }
 
     }
 }
