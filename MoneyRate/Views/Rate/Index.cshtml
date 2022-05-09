@@ -30,6 +30,9 @@
                     <th>
                         Currency Name
                     </th>
+                    <th>
+                        
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -37,10 +40,19 @@
                 @foreach (var obj in Model)
                 {
                     <tr>
-                        <td width="50%">@obj.CountryName</td>
+                        <td width="40%">@obj.CountryName</td>
                         <td width="30%">@obj.CountryRate</td>
                         <td width="20%">@obj.CurrencyName</td>
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Rate" asp-action="Buy" class="btn btn-primary mx-2">
+                                    Buy
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </div>
+                        </td>
                     </tr>
+                    
                 }
             </tbody>
         </table>
