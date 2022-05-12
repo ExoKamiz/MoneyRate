@@ -1,4 +1,52 @@
-﻿@section Scripts {
-    <script src="@Url.Content("~/Scripts/Convert.js")" type="text/javascript">
-    </script>
-} 
+﻿@model Rate    //для доступа списка Rate  в нашем представлении
+
+@{
+    ViewBag.Title = "Buy";
+}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="~/js/Convert.js"></script>
+</head>
+
+<body onload="startTime()">
+
+<div id="time"></div>
+
+<form asp-controller="Rate" asp-action="Buy" method ="get">          <!--строка поиска-->
+    <p>
+        Enter amount: <input type="text" name="enterAmount" />
+    </p>
+    
+    <div class="col-8">
+        From:
+        <input asp-for="CurrencyName" class="form-control" />
+        <span asp-validation-for="CurrencyName" class="text-danger"></span>                 <!--в этом месте будут отображаться сообщения об ошибках для Name-->
+    </div>
+
+    <p>
+        <input type="submit" value="Transfer" />
+        
+    </p>
+
+    <div class="col-8">
+        To:
+        <input asp-for="CurrencyName" class="form-control" />
+        <span asp-validation-for="CurrencyName" class="text-danger"></span>                 <!--в этом месте будут отображаться сообщения об ошибках для Name-->
+    </div>
+
+</form>
+
+<div id="div1">Result:
+    <div id="div2">  </div>
+</div>
+
+
+
+</body>
+
+</html>

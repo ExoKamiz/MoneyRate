@@ -1,0 +1,21 @@
+body {
+    background-color: #F0FFFF;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 30px;
+    margin-inside: 20px;
+}
+input[type=text] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+select  {
+    font-size: large;
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
